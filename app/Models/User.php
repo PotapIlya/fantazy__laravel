@@ -40,4 +40,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+
+
+
+    public function players()
+    {
+        return $this->belongsToMany(Players::class,
+            'user_players',
+            'user_id',
+            'player_id')->withPivot('player_id');
+    }
+
+
+
+
+
+
+
 }

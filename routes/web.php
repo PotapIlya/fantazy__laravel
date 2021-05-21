@@ -19,4 +19,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group([
+    'namespace' => '\App\Http\Controllers\User',
+    'middleware' => 'auth',
+], function ()
+{
+    Route::resource('/my_team', 'MyTeam\IndexController')->names('user.myTeam');
+    Route::post('/my_team/add', 'MyTeam\IndexController@addPlayer')->name('user.myTeam.addPlayer');
+});
+
+Route::group([
+    'namespace' => '\App\Http\Controllers\Admin',
+    'prefix' => 'admin',
+    'middleware' => 'auth',
+], function ()
+{
+    Route::resource('/team', 'TeamsController')->names('admin.teams');
+    Route::resource('/players', 'PlayersController')->names('admin.players');
+});
