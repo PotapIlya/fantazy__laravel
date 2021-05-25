@@ -4,7 +4,8 @@ namespace App\Http\Controllers\User\MyTeam;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\UserBaseController;
-use App\Models\Players;
+use App\Models\Player\Players;
+use App\Models\Player\Teams;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,28 +21,98 @@ class IndexController extends UserBaseController
      */
     public function index()
     {
-        $test=    \DB::table('user_players')
+        /*
+         * id игроков, которые уже есть у юзера
+         */
+        $idUserPlayers = \DB::table('user_players')
                 ->where('user_id', '=', \Auth::id())
                 ->get()->pluck('player_id');
 
+
        return view('groups.user.pages.myTeam.index', [
            'user' => User::with('players.team')->find( \Auth::id() ),
-           'players' => Players::with('team')
-               ->whereNotIn('id', $test)
+           'players' => Players::with('team', 'role')
+               ->whereNotIn('id', $idUserPlayers)
                ->get()
        ]);
     }
 
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|string
+     */
     public function addPlayer(Request $request)
     {
-        $user = User::with('players')->find(\Auth::id());
-        if ($user->players()->attach($request->player_id) === null)
-        {
-            return redirect()->back();
-        } else{
-            abort(500);
+        $user = User::with('players')->find( \Auth::id() );
+
+        // роль у добавляемого игрока
+        $player = Players::with('role', 'team')->findOrFail($request->player_id);
+        $playerRole = $player->role->name;
+        $playerTeam = $player->team->name;
+
+
+        // игроки, которые уже есть у юзера
+        $idUserPlayers = \DB::table('user_players')
+            ->where('user_id', '=', \Auth::id())
+            ->get()->pluck('player_id');
+        $userPlayersRole = Players::with('role', 'team')
+            ->whereIn('id', $idUserPlayers)
+            ->get();
+
+
+        if ($userPlayersRole->count() >= 5){
+            return 'limit players';
         }
 
+
+        // Групируем команды у игроков (которые есть у юзера) по группам
+        $groupUserTeam = $userPlayersRole->groupBy('team.name');
+        // не больше двух игроков в одной команде
+        if ( isset($groupUserTeam[$playerTeam]) && count($groupUserTeam[$playerTeam]) >= 2){
+            return 'limit team';
+        }
+
+
+        $countCarry = $userPlayersRole->where('role.name', 'carry')->count();
+        $countSupport = $userPlayersRole->where('role.name', 'support')->count();
+
+        if ($countCarry >= 3  && $playerRole === 'carry'){
+            return 'limit carry';
+        }
+        elseif ($countSupport >= 2  && $playerRole === 'support') {
+            return 'limit support';
+        }
+        else {
+            if ($user->players()->attach($request->player_id) === null)
+            {
+                return redirect()->back();
+            } else{
+                abort(500);
+            }
+        }
+    }
+
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroyPlayer(int $id)
+    {
+        $player = Players::findOrFail($id);
+        $user = \Auth::user();
+
+        if ($player->user->first()->id === $user->id)
+        {
+            if ($user->players()->detach($player->id)){
+                return redirect()->back();
+            } else{
+                abort(500);
+            }
+        } else {
+            abort(500);
+        }
     }
 
     /**

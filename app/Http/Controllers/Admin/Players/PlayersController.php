@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Players;
 
+use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Controllers\Controller;
-use App\Models\Players;
-use App\Models\Teams;
+use App\Models\Player\Players;
+use App\Models\Player\Role;
+use App\Models\Player\Teams;
 use Illuminate\Http\Request;
 
 class PlayersController extends AdminBaseController
@@ -20,9 +22,10 @@ class PlayersController extends AdminBaseController
      */
     public function index()
     {
-        return view('groups.admin.pages.players.index',[
+        return view('groups.admin.pages.player.players.index',[
             'teams' => Teams::all(),
-            'players' => Players::with('team')->get(),
+            'players' => Players::with('team', 'role')->get(),
+            'roles' => Role::all(),
         ]);
     }
 
@@ -36,16 +39,16 @@ class PlayersController extends AdminBaseController
 
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $create = Players::create([
             'team_id'=> $request->team_id,
+            'role_id'=> $request->role_id,
             'name'=> $request->name,
         ]);
         if ($create){

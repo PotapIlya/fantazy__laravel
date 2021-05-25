@@ -6,8 +6,9 @@
 
             <form action="{{ route('admin.players.store') }}" method="POST">
                 @csrf
+
                 @if(count($teams))
-                    <select name="team_id" id="">
+                    <select name="role_id" id="">
                         @foreach($teams as $team)
                             <option value="{{ $team->id }}">
                                 {{ $team->name }}
@@ -15,8 +16,18 @@
                         @endforeach
                     </select>
                 @endif
+                @if(count($roles))
+                    <select name="team_id" id="">
+                        @foreach($roles as $role)
+                            <option value="{{ $role->id }}">
+                                {{ $role->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                @endif
+
                 <label for="">
-                    <input type="text" name="name" placeholder="NameTeam">
+                    <input required type="text" name="name" placeholder="NameTeam">
                 </label>
                 <button type="submit" class="btn btn-success">Save</button>
             </form>
@@ -26,7 +37,7 @@
                 <ul>
                     @foreach($players as $player)
                         <li>
-                            {{ $player->team->name }} - {{ $player->name }}
+                            {{ $player->team->name }} - {{ $player->name }} - {{ $player->role->name }}
                         </li>
                     @endforeach
                 </ul>

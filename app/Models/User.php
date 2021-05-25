@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\League\League;
+use App\Models\Player\Players;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,6 +55,12 @@ class User extends Authenticatable
             'user_id',
             'player_id')->withPivot('player_id');
     }
+
+    public function league()
+    {
+        return $this->hasMany(League::class, 'user_id', 'id');
+    }
+
 
 
 

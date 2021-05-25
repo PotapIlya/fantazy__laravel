@@ -23,18 +23,37 @@ Auth::routes();
 Route::group([
     'namespace' => '\App\Http\Controllers\User',
     'middleware' => 'auth',
-], function ()
+],
+    function ()
 {
-    Route::resource('/my_team', 'MyTeam\IndexController')->names('user.myTeam');
-    Route::post('/my_team/add', 'MyTeam\IndexController@addPlayer')->name('user.myTeam.addPlayer');
+    Route::group([
+        'namespace' => 'MyTeam',
+    ], function ()
+    {
+        Route::resource('/my_team', 'IndexController')->names('user.myTeam');
+        Route::post('/my_team/add', 'IndexController@addPlayer')->name('user.myTeam.addPlayer');
+        Route::post('/my_team/delete/{id}', 'IndexController@destroyPlayer')->name('user.myTeam.destroyPlayer');
+    });
+
+    Route::resource('/league', 'League\IndexController')->names('user.league');
+
 });
+
 
 Route::group([
     'namespace' => '\App\Http\Controllers\Admin',
     'prefix' => 'admin',
     'middleware' => 'auth',
-], function ()
+],
+    function ()
 {
     Route::resource('/team', 'TeamsController')->names('admin.teams');
-    Route::resource('/players', 'PlayersController')->names('admin.players');
+
+    Route::group([
+        'namespace' => 'Players',
+    ], function ()
+    {
+        Route::resource('/players', 'PlayersController')->names('admin.players');
+        Route::resource('/player/role', 'RoleController')->names('admin.player.role');
+    });
 });

@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\League;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Players extends Model
+class League extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-
-    public function team()
-    {
-        return $this->hasOne(Teams::class, 'id', 'team_id');
-    }
 }

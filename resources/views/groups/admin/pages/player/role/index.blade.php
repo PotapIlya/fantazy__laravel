@@ -4,7 +4,7 @@
     <section>
         <div class="container">
 
-            <form action="{{ route('admin.teams.store') }}" method="POST">
+            <form action="{{ route('admin.player.role.store') }}" method="POST">
                 @csrf
                 <label for="">
                     <input required type="text" name="name" placeholder="NameTeam">
@@ -13,12 +13,14 @@
             </form>
 
 
-            @if(count($teams))
-              <ul>
-                  @foreach($teams as $team)
-                      <li>{{ $team->name }}</li>
-                  @endforeach
-              </ul>
+            @if(count($roles))
+                <ul>
+                    @foreach($roles as $role)
+                        <li>
+                            {{ $role->name }}
+                        </li>
+                    @endforeach
+                </ul>
             @endif
 
         </div>
