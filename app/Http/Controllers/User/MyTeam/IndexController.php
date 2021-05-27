@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\UserBaseController;
 use App\Models\Player\Players;
 use App\Models\Player\Teams;
-use App\Models\User;
+use App\Models\Users\User;
 use Illuminate\Http\Request;
 
 class IndexController extends UserBaseController
@@ -42,6 +42,9 @@ class IndexController extends UserBaseController
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|string
      */
+
+    const carryName = 'Carry';
+    const supportName = 'Support';
     public function addPlayer(Request $request)
     {
         $user = User::with('players')->find( \Auth::id() );
@@ -60,11 +63,9 @@ class IndexController extends UserBaseController
             ->whereIn('id', $idUserPlayers)
             ->get();
 
-
         if ($userPlayersRole->count() >= 5){
             return 'limit players';
         }
-
 
         // Групируем команды у игроков (которые есть у юзера) по группам
         $groupUserTeam = $userPlayersRole->groupBy('team.name');
@@ -73,14 +74,13 @@ class IndexController extends UserBaseController
             return 'limit team';
         }
 
+        $countCarry = $userPlayersRole->where('role.name', self::carryName)->count();
+        $countSupport = $userPlayersRole->where('role.name', 'Support')->count();
 
-        $countCarry = $userPlayersRole->where('role.name', 'carry')->count();
-        $countSupport = $userPlayersRole->where('role.name', 'support')->count();
-
-        if ($countCarry >= 3  && $playerRole === 'carry'){
+        if ($countCarry >= 3  && $playerRole === self::carryName){
             return 'limit carry';
         }
-        elseif ($countSupport >= 2  && $playerRole === 'support') {
+        elseif ($countSupport >= 2  && $playerRole === self::supportName) {
             return 'limit support';
         }
         else {
@@ -102,6 +102,8 @@ class IndexController extends UserBaseController
     {
         $player = Players::findOrFail($id);
         $user = \Auth::user();
+
+
 
         if ($player->user->first()->id === $user->id)
         {
@@ -136,15 +138,20 @@ class IndexController extends UserBaseController
         //
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        if (\Auth::id() === $id){
+            return redirect()->route('user.myTeam.index');
+        }
+
+        return view('groups.user.pages.myTeam.show', [
+            'user' => User::with('players')->findOrFail($id)
+        ]);
     }
 
     /**

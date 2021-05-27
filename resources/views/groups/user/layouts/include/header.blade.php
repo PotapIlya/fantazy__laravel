@@ -13,7 +13,19 @@
 
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+
+                    <li class="mr-3">
+                        <a href="{{ route('user.myTeam.index') }}">
+                            myTeam
+                        </a>
+                    </li>
+                    <li class="mr-3">
+                        <a href="{{ route('user.league.index') }}">
+                            League
+                        </a>
+                    </li>
+
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))

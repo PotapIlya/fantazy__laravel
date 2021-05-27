@@ -35,7 +35,17 @@ Route::group([
         Route::post('/my_team/delete/{id}', 'IndexController@destroyPlayer')->name('user.myTeam.destroyPlayer');
     });
 
-    Route::resource('/league', 'League\IndexController')->names('user.league');
+    Route::group([
+        'namespace' => 'League',
+    ], function ()
+    {
+        Route::resource('/league', 'IndexController')->names('user.league');
+        Route::post('/league/addUser/{id}', 'IndexController@addUser')->name('user.league.addUser');
+        Route::post('/league/destroyUser/{id}', 'IndexController@destroyUser')->name('user.league.destroyUser');
+    });
+
+
+
 
 });
 

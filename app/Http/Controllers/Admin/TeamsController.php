@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Teams;
+use App\Models\Player\Teams;
 use Illuminate\Http\Request;
 
 class TeamsController extends AdminBaseController

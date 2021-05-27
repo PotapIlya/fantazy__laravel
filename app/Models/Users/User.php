@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
 use App\Models\League\League;
 use App\Models\Player\Players;
@@ -56,9 +56,17 @@ class User extends Authenticatable
             'player_id')->withPivot('player_id');
     }
 
-    public function league()
+    public function user_create_league()
     {
         return $this->hasMany(League::class, 'user_id', 'id');
+    }
+
+    public function come_league()
+    {
+        return $this->belongsToMany(League::class,
+            'user_league',
+            'user_id',
+            'league_id');
     }
 
 

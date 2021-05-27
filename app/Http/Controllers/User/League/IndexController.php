@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User\League;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\UserBaseController;
 use App\Models\League\League;
-use App\Models\User;
+use App\Models\Users\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,9 +21,14 @@ class IndexController extends UserBaseController
      */
     public function index()
     {
-        return view('groups.user.pages.league.index', [
-            'user' => User::with('league')->findOrFail(\Auth::id())
-        ]);
+        // юзер вступил в лигу
+        $userLeagues = User::with('come_league')->findOrFail(\Auth::id())->come_league;
+
+        // все лиги, кроме тех, в которые вступил юзер
+        $leagues = League::whereNotIn('id', $userLeagues->pluck('id'))->get();
+
+
+        return view('groups.user.pages.league.index', compact('userLeagues', 'leagues'));
     }
 
     /**
@@ -34,6 +39,54 @@ class IndexController extends UserBaseController
     public function create()
     {
         //
+    }
+
+    public function addUser(Request $request, int $id)
+    {
+        // ДОБАВИТЬ:
+        // проверить мб юзер уже есть
+
+
+        $league = League::findOrFail($id);
+        $user = \Auth::user();
+
+        if ( !is_null($league->password) )
+        {
+            if (Hash::check($request->password, $league->password))
+            {
+               return $this->addUserBd($user, $id);
+            } else{
+                return 'error password';
+            }
+        }
+        else{
+            return $this->addUserBd($user, $id);
+        }
+    }
+    private function addUserBd(object $user, int $id)
+    {
+        if ($user->come_league()->attach($id) === null)
+        {
+            return redirect()->back();
+        } else{
+            abort(500);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroyUser(Request $request, int $id)
+    {
+        $user = \Auth::user();
+        if ($user->come_league()->detach($id))
+        {
+            return redirect()->route('user.league.index');
+        } else{
+            abort(500);
+        }
     }
 
     /**
@@ -53,21 +106,34 @@ class IndexController extends UserBaseController
             'password' => $data['password'],
         ]);
         if ($create){
-            return redirect()->back();
+            return $this->addUserBd(\Auth::user(), $create->id);
         } else{
             abort(500);
         }
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $statusComeForm = false;
+        $statusDestroyForm = false;
+        $item = League::with('users')->findOrFail($id);
+
+        if (!count($item->users->where('id', \Auth::id())))
+        {
+            $statusComeForm = true;
+        }
+
+        if ( $item->user_id === \Auth::id() )
+        {
+            $statusDestroyForm = true;
+        }
+
+        return view('groups.user.pages.league.show', compact('item', 'statusComeForm', 'id', 'statusDestroyForm'));
     }
 
     /**
@@ -94,13 +160,17 @@ class IndexController extends UserBaseController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        if ( League::destroy($id) )
+        {
+            return redirect()->route('user.league.index');
+        }
+        else{
+            abort(500);
+        }
     }
 }

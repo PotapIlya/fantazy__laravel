@@ -13,8 +13,8 @@
                 <ul class="w-50">
                     @foreach($user->players as $player)
                         <li class="d-flex justify-content-between align-content-center">
-                            Player: {{ $player->name }} =>
                             Team: {{ $player->team->name }} =>
+                            Player: {{ $player->name }} =>
                             Role: {{ $player->role->name }}
                             <form action="{{ route('user.myTeam.destroyPlayer', $player->id) }}" method="POST">
                                 @csrf

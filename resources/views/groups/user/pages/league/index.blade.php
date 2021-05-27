@@ -18,10 +18,10 @@
                 <form method="POST" action="{{ route('user.league.store') }}" class="d-flex flex-column">
                     @csrf
                     <label for="">
-                        <input type="text" required name="name">
+                        <input type="text" required name="name" placeholder="name">
                     </label>
                     <label for="">
-                        <input type="text" name="password">
+                        <input type="text" name="password" placeholder="password">
                     </label>
 
                     <button class="btn btn-info">Create</button>
@@ -29,37 +29,55 @@
             </div>
 
             <div class="col-6">
-                <h2>
-                    Мои лиги
-                </h2>
+                <div>
+                    <h2>Вы присоеденились</h2>
+                    @if(count($userLeagues))
+                        <ul>
+                            @foreach($userLeagues as $userLeague)
+                                <li class="d-flex">
+                                    <a href="{{ route('user.league.show', $userLeague->id) }}">
+                                        {{ $userLeague->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <h3>Пусто</h3>
+                    @endif
+                </div>
+                <div>
+                    <h2>
+                        Все лиги
+                    </h2>
+                    @if(count($leagues))
+                        <ul>
+                            @foreach( $leagues as $league )
+                                <li class="d-flex align-items-center justify-content-between">
+                                    <a href="{{ route('user.league.show', $league->id) }}">
+                                        {{ $league->name }}
+                                    </a>
 
-                @if(count($user->league))
-                    <ul>
-                        @foreach( $user->league as $league )
-                            <li class="d-flex align-items-center justify-content-between">
-                                <span>
-                                    {{ $league->name }}
-                                </span>
-
-                                @if( is_null($league->password) )
-                                    <form action="" method="POST">
-                                        @csrf
-                                        <input type="text" name="password" required>
-                                        <button class="btn btn-info">Войти</button>
-                                    </form>
-                                @else
-                                    <a href="#" class="btn btn-info ">Войти</a>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
-                @else
-                    <h3>
-                        Empty
-                    </h3>
-                @endif
-
-
+                                    @if( !is_null($league->password) )
+                                        <form action="{{ route('user.league.addUser', $league->id) }}" method="POST">
+                                            @csrf
+                                            <label for="">
+                                                <input type="text" name="password" required>
+                                            </label>
+                                            <button class="btn btn-info">Войти</button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('user.league.addUser', $league->id) }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-info">Войти</button>
+                                        </form>
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <h3>Пусто</h3>
+                    @endif
+                </div>
             </div>
         </div>
 

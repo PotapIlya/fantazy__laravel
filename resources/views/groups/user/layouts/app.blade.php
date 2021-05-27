@@ -19,13 +19,13 @@
 </head>
 <body>
     <div id="app">
-        @include('groups.admin.layouts.include.header')
+        @include('groups.user.layouts.include.header')
 
         <main>
             @yield('content')
         </main>
 
-        @include('groups.admin.layouts.include.footer')
+        @include('groups.user.layouts.include.footer')
         @yield('footer')
     </div>
 </body>

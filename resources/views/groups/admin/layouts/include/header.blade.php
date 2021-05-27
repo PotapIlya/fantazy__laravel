@@ -11,18 +11,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <ul class="navbar-nav mr-auto">
+
                         <li class="mr-3">
-                            <a href="{{ route('user.myTeam.index') }}">
-                                Index
+                            <a href="{{ route('admin.players.index') }}">
+                                Players
                             </a>
                         </li>
                         <li class="mr-3">
-                            <a href="{{ route('user.league.index') }}">
-                                League
+                            <a href="{{ route('admin.player.role.index') }}">
+                                Role
                             </a>
                         </li>
-                    </ul>
+                        <li class="mr-3">
+                            <a href="{{ route('admin.teams.index') }}">
+                                Teams
+                            </a>
+                        </li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

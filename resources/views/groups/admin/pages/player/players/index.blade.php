@@ -8,7 +8,7 @@
                 @csrf
 
                 @if(count($teams))
-                    <select name="role_id" id="">
+                    <select name="team_id" id="">
                         @foreach($teams as $team)
                             <option value="{{ $team->id }}">
                                 {{ $team->name }}
@@ -17,7 +17,7 @@
                     </select>
                 @endif
                 @if(count($roles))
-                    <select name="team_id" id="">
+                    <select name="role_id" id="">
                         @foreach($roles as $role)
                             <option value="{{ $role->id }}">
                                 {{ $role->name }}

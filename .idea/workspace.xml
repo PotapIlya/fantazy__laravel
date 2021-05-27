@@ -23,37 +23,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3831a518-3389-4eb2-9a90-da067cbe5e05" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Players/RoleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/User/League/IndexController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/League/League.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Player/Players.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_20_135143_create_roles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_25_161737_create_leagues_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/groups/admin/pages/player/role/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/groups/user/pages/league/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_21_05_2021__13_49.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/groups/user/pages/league/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/groups/user/pages/myTeam/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/fantazy_laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fantazy_laravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Players/PlayersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TeamsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TeamsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/League/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/League/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/MyTeam/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/MyTeam/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Players.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Player/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Teams.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Player/Teams.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_21_132350_create_players_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_21_132350_create_players_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/League/League.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/League/League.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Player/Players.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Player/Players.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserPlayers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserPlayers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_25_163519_user_league.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_25_163528_create_user_league_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_25_163528_create_user_league_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/groups/admin/layouts/include/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/admin/layouts/include/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/groups/admin/pages/players/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/admin/pages/player/players/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/groups/admin/pages/teams/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/admin/pages/teams/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/groups/admin/pages/player/players/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/admin/pages/player/players/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/groups/user/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/user/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/groups/user/layouts/include/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/user/layouts/include/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/groups/user/pages/league/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/user/pages/league/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/groups/user/pages/myTeam/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/user/pages/myTeam/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -211,28 +206,31 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/groups/admin/pages/player/role" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/groups/user/pages/myTeam" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\user\pages\myTeam" />
+      <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\admin\pages\player\role" />
+      <recent name="C:\OpenServer\domains\fantazy_laravel\app\Models" />
+      <recent name="C:\OpenServer\domains\fantazy_laravel\app" />
+      <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\user" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\fantazy_laravel\app\Models\User" />
       <recent name="C:\OpenServer\domains\fantazy_laravel\app\Models\Players" />
       <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\admin\pages\player" />
       <recent name="C:\OpenServer\domains\fantazy_laravel\app\Http\Controllers\Admin\Players" />
       <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\admin\pages\player\role" />
-      <recent name="C:\OpenServer\domains\fantazy_laravel\app\Models" />
-      <recent name="C:\OpenServer\domains\fantazy_laravel\app" />
-      <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\user\pages\myTeam" />
-      <recent name="C:\OpenServer\domains\fantazy_laravel\resources\views\groups\user" />
     </key>
   </component>
   <component name="RunManager">
@@ -263,7 +261,8 @@
       <workItem from="1621950088227" duration="53000" />
       <workItem from="1621950185484" duration="16000" />
       <workItem from="1621950222538" duration="209000" />
-      <workItem from="1621950440654" duration="9886000" />
+      <workItem from="1621950440654" duration="15430000" />
+      <workItem from="1622131356978" duration="8769000" />
     </task>
     <servers />
   </component>
@@ -290,26 +289,38 @@
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
     <state x="740" y="303" key="FileChooserDialogImpl/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621950129288" />
-    <state x="461" y="207" key="SettingsEditor" timestamp="1621950524523">
+    <state x="461" y="207" key="SettingsEditor" timestamp="1622132922010">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
-    <state x="461" y="207" key="SettingsEditor/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621950524523" />
+    <state x="461" y="207" key="SettingsEditor/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1622132922010" />
     <state x="-1920" y="112" width="1517" height="827" key="dock-window-1" timestamp="1621959319485">
       <screen x="-1920" y="112" width="1920" height="1040" />
     </state>
     <state x="-1920" y="112" width="1517" height="827" key="dock-window-1/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621959319485" />
-    <state x="668" y="141" width="583" height="843" key="find.popup" timestamp="1621959185350">
+    <state x="-1501" y="112" width="1517" height="827" key="dock-window-2" timestamp="1621960971450">
+      <screen x="-1920" y="112" width="1920" height="1040" />
+    </state>
+    <state x="-1501" y="112" width="1517" height="827" key="dock-window-2/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621960971450" />
+    <state x="-1689" y="112" width="1517" height="827" maximized="true" key="dock-window-3" timestamp="1621960971450">
+      <screen x="-1920" y="112" width="1920" height="1040" />
+    </state>
+    <state x="-1689" y="112" width="1517" height="827" maximized="true" key="dock-window-3/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621960971450" />
+    <state x="-1831" y="137" width="1517" height="827" key="dock-window-4" timestamp="1621962695537">
+      <screen x="-1920" y="112" width="1920" height="1040" />
+    </state>
+    <state x="-1831" y="137" width="1517" height="827" key="dock-window-4/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621962695537" />
+    <state x="668" y="141" width="583" height="843" key="find.popup" timestamp="1622133177154">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
-    <state x="668" y="141" width="583" height="843" key="find.popup/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621959185350" />
-    <state x="616" y="262" key="run.anything.popup" timestamp="1621959695422">
+    <state x="668" y="141" width="583" height="843" key="find.popup/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1622133177154" />
+    <state x="616" y="262" key="run.anything.popup" timestamp="1622133021470">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
-    <state x="616" y="262" key="run.anything.popup/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621959695422" />
-    <state x="623" y="269" width="672" height="678" key="search.everywhere.popup" timestamp="1621952206052">
+    <state x="616" y="262" key="run.anything.popup/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1622133021470" />
+    <state x="623" y="269" width="672" height="678" key="search.everywhere.popup" timestamp="1622132901742">
       <screen x="0" y="46" width="1920" height="1034" />
     </state>
-    <state x="623" y="269" width="672" height="678" key="search.everywhere.popup/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1621952206052" />
+    <state x="623" y="269" width="672" height="678" key="search.everywhere.popup/0.46.1920.1034/-1920.112.1920.1040@0.46.1920.1034" timestamp="1622132901742" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
